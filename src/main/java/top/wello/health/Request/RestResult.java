@@ -1,8 +1,6 @@
 package top.wello.health.Request;
 
-import top.wello.health.dao.BaseDO;
-
-public class RestResult<T> extends BaseDO {
+public class RestResult<T> {
 
     private T data;
     private boolean success;

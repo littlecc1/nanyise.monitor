@@ -19,7 +19,20 @@ public class NetworkService {
     private static Gson gson = new Gson();
 
     public static String get(String url) {
-        return get(url, null, String.class);
+        Request request = new Request.Builder()
+                .get()
+                .url(url)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        try {
+            Response response = call.execute();
+            if (response.isSuccessful()) {
+                return response.body().string();
+            }
+        } catch (IOException e) {
+            logger.error("get failed", e);
+        }
+        return null;
     }
 
 //    public static <T> T get(String url, Map<String, String> params) {
