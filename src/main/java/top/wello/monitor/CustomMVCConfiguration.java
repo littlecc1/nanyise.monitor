@@ -1,4 +1,4 @@
-package top.wello.health;
+package top.wello.monitor;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

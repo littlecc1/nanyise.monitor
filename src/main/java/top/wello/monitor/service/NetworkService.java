@@ -1,11 +1,11 @@
-package top.wello.health.service;
+package top.wello.monitor.service;
 
 import com.google.gson.Gson;
 import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import top.wello.health.util.Utility;
+import top.wello.monitor.util.Utility;
 
 import java.io.IOException;
 import java.util.Map;
@@ -28,6 +28,23 @@ public class NetworkService {
             Response response = call.execute();
             if (response.isSuccessful()) {
                 return response.body().string();
+            }
+        } catch (IOException e) {
+            logger.error("get failed", e);
+        }
+        return null;
+    }
+
+    public static String getFtp(String url) {
+        Request request = new Request.Builder()
+                .get()
+                .url(url)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        try {
+            Response response = call.execute();
+            if (response.isSuccessful()) {
+                return String.valueOf(response.code());
             }
         } catch (IOException e) {
             logger.error("get failed", e);

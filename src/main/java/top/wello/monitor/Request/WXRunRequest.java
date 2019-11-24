@@ -1,4 +1,4 @@
-package top.wello.health.Request;
+package top.wello.monitor.Request;
 
 public class WXRunRequest extends BaseRequest {
 
